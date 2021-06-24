@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="background">
+  <form [formGroup]="virementForm" (ngSubmit)="onFormSubmit()">
+    <div class="container">
+      <div class="whiteForm">
+        <mat-grid-list cols="3" [gutterSize]="'15px'">
+         
+
+          <mat-grid-tile>
+            <mat-form-field class="formField">
+              <mat-label>Somme Total</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="sommeTotal"
+                placeholder="XX.XX"
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <h1>Votre solde actuel :</h1>
+          </mat-grid-tile>
+     
+          <mat-grid-tile>
+            <div class="envoyer" fxFlex fxLayoutAlign="flex-end">
+              <button type="submit" mat-raised-button color="primary" >
+                Envoyer
+              </button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="2" [gutterSize]="'15px'">
+
+            <mat-grid-tile>
+
+          <div formArrayName="listBenef">
+            <div *ngFor="let benif of listBenef.controls; index as idx">
+              <mat-form-field class="formField">
+                <mat-label>Num compte</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="entrez num compte"
+                  [formControlName]="idx"
+                 
+                />
+              </mat-form-field>
+              
+            </div>
+          </div>
+            </mat-grid-tile>
+         
+            
+
+          
+
+
+                
+            
+            <mat-grid-tile>
+
+        <div formArrayName="sommeBenef" class="sommeclass">
+          <div *ngFor="let s of sommeBenef.controls; index as idx">
+
+            <mat-form-field class="formField">
+                <mat-label>SommeB</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="entrez somme de benef"
+                  [formControlName]="idx"
+                 
+                />
+
+                
+              
+              
+              
+            </mat-form-field>
+            <button class="" mat-stroked-button		
+              color="primary" type="button" (click)="addNameField()" class="btn btn-success" [ngClass] = "'pad'">Add</button>
+              
+              <button  mat-stroked-button	
+              color="warn" (click)="deleteNameField(idx)" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+          
+            
+            
+      </mat-grid-tile>
+        
+          
+          
+         
+        </mat-grid-list>
+      </div>
+    </div>
+  </form>
+</div>
